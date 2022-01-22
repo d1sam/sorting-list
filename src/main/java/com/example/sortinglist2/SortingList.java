@@ -1,8 +1,11 @@
 package com.example.sortinglist2;
 
 import com.example.sortinglist2.mark_sorter.MarkSorterAsc;
+import com.example.sortinglist2.mark_sorter.MarkSorterDesc;
 import com.example.sortinglist2.name_sorters.NameSorterAsc;
+import com.example.sortinglist2.name_sorters.NameSorterDesc;
 import com.example.sortinglist2.surname_sorters.LastnameSorterAsc;
+import com.example.sortinglist2.surname_sorters.LastnameSorterDesc;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,6 +34,7 @@ public class SortingList extends Application {
     // Интерфейс ObservableList похож на интерфейс List, но
     // имеет еще возможность оповещать остальные объекты о том, что он изменился
     private ObservableList<Student> students;
+    private static int modOrder;
 
     /**
      * Этот метод запускается, когда запускается ваше приложение
@@ -127,7 +131,12 @@ public class SortingList extends Application {
         sortByNameButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                students.sort(new NameSorterAsc());
+                if (modOrder % 2 == 0) {
+                    students.sort(new NameSorterAsc());
+                } else {
+                    students.sort(new NameSorterDesc());
+                }
+                modOrder++;
             }
         });
 
@@ -136,14 +145,24 @@ public class SortingList extends Application {
         sortByLastNameButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                students.sort(new LastnameSorterAsc());
+                if (modOrder % 2 == 0) {
+                    students.sort(new LastnameSorterAsc());
+                } else {
+                    students.sort(new LastnameSorterDesc());
+                }
+                modOrder++;
             }
         });
         // TODO: Обработка нажатия на кнопку "Сортировать по оценке"
         sortByMarkButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                students.sort(new MarkSorterAsc());
+                if (modOrder % 2 == 0) {
+                    students.sort(new MarkSorterAsc());
+                } else {
+                    students.sort(new MarkSorterDesc());
+                }
+                modOrder++;
             }
         });
         // Создаем горизональный ряд
