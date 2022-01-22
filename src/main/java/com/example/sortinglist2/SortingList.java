@@ -1,5 +1,8 @@
 package com.example.sortinglist2;
 
+import com.example.sortinglist2.mark_sorter.MarkSorterAsc;
+import com.example.sortinglist2.name_sorters.NameSorterAsc;
+import com.example.sortinglist2.surname_sorters.LastnameSorterAsc;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -124,14 +127,25 @@ public class SortingList extends Application {
         sortByNameButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                students.sort(new NameSorter());
+                students.sort(new NameSorterAsc());
             }
         });
 
         // TODO: Обработка нажатия на кнопку "Сортировать по фамилии"
 
+        sortByLastNameButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                students.sort(new LastnameSorterAsc());
+            }
+        });
         // TODO: Обработка нажатия на кнопку "Сортировать по оценке"
-
+        sortByMarkButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                students.sort(new MarkSorterAsc());
+            }
+        });
         // Создаем горизональный ряд
         HBox hb = new HBox();
         // Расстояние между элементами ряда
