@@ -128,42 +128,35 @@ public class SortingList extends Application {
 
         // Обработка нажатия на кнопку с помощью объекта анонимного класса,
         // реализующего интерфейс Comparable
-        sortByNameButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (order) {
-                    students.sort(new NameSorterAsc());
-                } else {
-                    students.sort(new NameSorterDesc());
-                }
-                order = !order;
+        sortByNameButton.setOnAction(event -> {
+            if (order) {
+                students.sort(new NameSorterAsc());
+            } else {
+                students.sort(new NameSorterDesc());
             }
+            order = !order;
         });
 
         // TODO: Обработка нажатия на кнопку "Сортировать по фамилии"
 
-        sortByLastNameButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (order) {
-                    students.sort(new LastnameSorterAsc());
-                } else {
-                    students.sort(new LastnameSorterDesc());
-                }
-                order = !order;
+        sortByLastNameButton.setOnAction(event -> {
+
+            if (order) {
+                students.sort(new LastnameSorterAsc());
+            } else {
+                students.sort(new LastnameSorterDesc());
             }
+            order = !order;
+
         });
         // TODO: Обработка нажатия на кнопку "Сортировать по оценке"
-        sortByMarkButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (order) {
-                    students.sort(new MarkSorterAsc());
-                } else {
-                    students.sort(new MarkSorterDesc());
-                }
-                order = !order;
+        sortByMarkButton.setOnAction(event -> {
+            if (order) {
+                students.sort(new MarkSorterAsc());
+            } else {
+                students.sort(new MarkSorterDesc());
             }
+            order = !order;
         });
         // Создаем горизональный ряд
         HBox hb = new HBox();
