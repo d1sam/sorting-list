@@ -34,7 +34,7 @@ public class SortingList extends Application {
     // Интерфейс ObservableList похож на интерфейс List, но
     // имеет еще возможность оповещать остальные объекты о том, что он изменился
     private ObservableList<Student> students;
-    private static int modOrder;
+    private static boolean order;
 
     /**
      * Этот метод запускается, когда запускается ваше приложение
@@ -131,12 +131,12 @@ public class SortingList extends Application {
         sortByNameButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (modOrder % 2 == 0) {
+                if (order) {
                     students.sort(new NameSorterAsc());
                 } else {
                     students.sort(new NameSorterDesc());
                 }
-                modOrder++;
+                order = !order;
             }
         });
 
@@ -145,24 +145,24 @@ public class SortingList extends Application {
         sortByLastNameButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (modOrder % 2 == 0) {
+                if (order) {
                     students.sort(new LastnameSorterAsc());
                 } else {
                     students.sort(new LastnameSorterDesc());
                 }
-                modOrder++;
+                order = !order;
             }
         });
         // TODO: Обработка нажатия на кнопку "Сортировать по оценке"
         sortByMarkButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (modOrder % 2 == 0) {
+                if (order) {
                     students.sort(new MarkSorterAsc());
                 } else {
                     students.sort(new MarkSorterDesc());
                 }
-                modOrder++;
+                order = !order;
             }
         });
         // Создаем горизональный ряд
